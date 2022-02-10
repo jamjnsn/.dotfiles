@@ -1,0 +1,9 @@
+set linenumbers
+set smooth
+set mouse
+set softwrap
+set tabsize 4
+set titlecolor yellow
+set numbercolor yellow
+set statuscolor yellow
+set autoindent
