@@ -10,13 +10,18 @@ export DOTFILES="$HOME/.dotfiles"
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$XDG_CONFIG_HOME/local/share
 export XDG_CACHE_HOME=$XDG_CONFIG_HOME/cache
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export CONFIG=$XDG_CONFIG_HOME
 
 # ==================================================
-# Editor
+# Defaults
 # ==================================================
 
 export EDITOR="nano"
 export VISUAL="code"
+export SUDO_EDITOR="rnano"
+export BROWSER="firefox"
 
 # ==================================================
 # Software
@@ -61,9 +66,40 @@ export NPM_CONFIG_PREFIX="$XDG_CONFIG_HOME/node_modules"
 export GIT_REVIEW_BASE=main
 
 # ==================================================
+# App directories
+# ==================================================
+
+export GOPATH="$XDG_DATA_HOME/go"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+# Deleted file directory for rip
+export GRAVEYARD="$HOME/.local/share/Trash"
+
+# NPM
+export NPM_PATH="$XDG_CONFIG_HOME/node_modules"
+export NPM_BIN="$XDG_CONFIG_HOME/node_modules/bin"
+export NPM_CONFIG_PREFIX="$XDG_CONFIG_HOME/node_modules"
+
+# ==================================================
 # PATH
 # ==================================================
 
-export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
-export PATH="$XDG_CONFIG_HOME/go/bin:$PATH"
-export PATH="$NPM_BIN:$PATH"
+# Add directory to path if it isn't already there
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+append_path $NPM_BIN
+append_path $GOPATH/bin
+append_path $COMPOSER_HOME/vendor/bin
+append_path $CARGO_HOME/bin
+append_path $HOME/.local/bin
+
+export PATH
