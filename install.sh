@@ -9,21 +9,28 @@ source zsh/zshenv
 
 mkdir -p $ZDOTDIR;
 
-ln -sf $DOTFILES/zsh/zshenv $HOME/.zshenv
-ln -sf $DOTFILES/zsh/zshrc $ZDOTDIR/.zshrc
+ln -s $DOTFILES/zsh/zshenv $HOME/.zshenv
+ln -s $DOTFILES/zsh/zshrc $ZDOTDIR/.zshrc
+
+# ==================================================
+# alacritty
+# ==================================================
+
+mkdir -p $XDG_CONFIG_HOME/alacritty
+ln -s "$DOTFILES/alacritty/alacritty.yml" "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
 
 # ==================================================
 # tmux
 # ==================================================
 
-mkdir -p $XDG_CONFIG_HOME/tmux;
-ln -sf "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
+mkdir -p $XDG_CONFIG_HOME/tmux
+ln -s "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 
 # ==================================================
 # nano
 # ==================================================
 
-ln -sf "$DOTFILES/nano/nanorc" "$HOME/.nanorc"
+ln -s "$DOTFILES/nano/nanorc" "$HOME/.nanorc"
 
 # ==================================================
 # Git

@@ -1,0 +1,13 @@
+window:
+  opacity: 0.5
+  padding:
+    x: 20
+    y: 20
+font:
+  size: 13.0
+  normal:
+    family: "CaskaydiaCove Nerd Font"
+key_bindings:
+  - { key: N, mods: Control, action: SpawnNewInstance }
+import:
+  - ~/.dotfiles/alacritty/everblush.yml
