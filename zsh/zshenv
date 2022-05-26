@@ -103,3 +103,8 @@ append_path $CARGO_HOME/bin
 append_path $HOME/.local/bin
 
 export PATH
+
+# ==================================================
+# Local overrides
+# ==================================================
+if [ -f $ZDOTDIR/zshenv.local ]; then source $ZDOTDIR/zshenv.local; fi
