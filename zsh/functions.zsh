@@ -117,3 +117,28 @@ ex() {
 		echo "\"$1\" is not a valid file"
 	fi
 }
+
+# ==================================================
+# Make temporary directory for the  
+# duration of a subshell.
+# ==================================================
+
+tmp () {
+    (
+        export MY_SHLVL=tmp:$MY_SHLVL 
+        export od=$PWD 
+        export tmp=$(mktemp -d) 
+        trap "rm -rf $tmp" 0
+        cd $tmp
+        if [ -z "$1" ]
+        then
+            $SHELL -l
+        else
+            [ "$1" = "-l" ] && {
+                shift
+                set "$@" ";" "$SHELL -l"
+            }
+            eval "$@"
+        fi
+    )
+}
