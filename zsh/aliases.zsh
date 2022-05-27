@@ -34,10 +34,23 @@ alias cp="cp -riv"
 alias mkdir="mkdir -vp"
 alias wget="wget -c" # Resume unfinished download
 
-# Add color to grep
+# Add colors
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
+alias df="df -h"
+alias du="du -h"
+alias free="free -h"
+alias diff="diff --color"
+alias ip="ip -color"
+
+# Use grc if present
+if (( $+commands[grc] )); then
+	alias dig="grc \dig"
+	alias netstat="grc \netstat"
+	alias ping="grc \ping"
+	alias tail="grc \tail"
+fi
 
 # ==================================================
 # 	WSL shortcuts
