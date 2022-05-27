@@ -142,3 +142,9 @@ tmp () {
         fi
     )
 }
+
+rlzsh () {
+	source $HOME/.zshenv
+	source $ZDOTDIR/.zshrc
+	exec $(which zsh)
+}

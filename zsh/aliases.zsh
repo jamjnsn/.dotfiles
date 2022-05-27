@@ -91,9 +91,6 @@ alias pacman-autoremove="pacman -Qdtq | pacman -Rs -"
 # Switch to root terminal
 alias root="sudo -i"
 
-# Reload zsh profile
-alias rlzsh="source $DOTFILES/zsh/zshenv && source $DOTFILES/zsh/zshrc"
-
 # Quickly download via yt-dlp
 alias ytdld="yt-dlp -P ~/Downloads"
 
