@@ -1,7 +1,15 @@
 #!/usr/bin/env zsh
 # ==================================================
 
-if command -v zoxide &> /dev/null; then eval "$(zoxide init zsh)"; fi
+# Add to fpath without duplicating entries
+append_fpath () {
+    case " $fpath " in
+        *" $1 "*)
+            ;;
+        *)
+            fpath=(${fpath:+$fpath} $1)
+    esac
+}
 
 # ==================================================
 # Navigation
@@ -35,11 +43,13 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 # Load plugins
 # ==================================================
 
+if command -v zoxide &> /dev/null; then eval "$(zoxide init zsh)"; fi
+
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
-fpath=($DOTFILES/zsh/completions $fpath)
+append_fpath $DOTFILES/zsh/plugins/zsh-completions/src
+append_fpath $DOTFILES/zsh/completions
 
 # ==================================================
 # Load aliases & functions
@@ -52,11 +62,11 @@ source $DOTFILES/zsh/functions.zsh
 # Prompt
 # ==================================================
 
-fpath=($DOTFILES/zsh/prompt $fpath)
+append_fpath $DOTFILES/zsh/prompt
 autoload -Uz prompt && prompt
-
 
 # ==================================================
 # Local overrides
 # ==================================================
+
 if [ -f $ZDOTDIR/zshrc.local ]; then source $ZDOTDIR/zshrc.local; fi
