@@ -108,4 +108,6 @@ alias root="sudo -i"
 alias ytdld="yt-dlp -P ~/Downloads"
 
 # Remind myself to use rip for file deletion
-alias rm="echo Use 'rip'."
+if (( $+commands[rip] )); then
+	alias rm="echo Use 'rip'."
+fi
