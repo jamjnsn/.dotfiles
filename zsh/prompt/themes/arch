@@ -1,0 +1,54 @@
+# ==================================================
+# Prompt settings
+# ==================================================
+
+local current_dir=$'%F{white}%~%B'
+local prompt_symbol=''
+
+if [[ $UID -eq 0 ]]; then
+	local user_prompt="%F{red} %F{yellow}${prompt_symbol}%F{red}${prompt_symbol}%F{yellow}${prompt_symbol}"
+else
+	local user_prompt="%F{cyan} %F{magenta}${prompt_symbol}%F{cyan}${prompt_symbol}%F{green}${prompt_symbol}"
+fi
+
+# ==================================================
+# Pre-command prompt
+# ==================================================
+
+local prompt_precmd() {
+    print -P ''
+}
+
+# ==================================================
+# Print Git status
+# ==================================================
+
+local get_git_status () {
+    # Check if current directory is a Git repo
+    if $(git rev-parse --is-inside-work-tree 2>/dev/null); then
+        local git_prompt="in repo"
+        echo " $(git branch --show-current)"
+    fi
+}
+
+# ==================================================
+# Print return code if not 0
+# ==================================================
+
+local get_return_status () {
+    echo $'%(?..%{%F{red}%}↵ %?%f%b)'
+}
+
+# ==================================================
+# Set prompt variables
+# ==================================================
+
+local set_prompt () {
+    add-zsh-hook precmd prompt_precmd   # Set pre-command prompt
+    setopt prompt_subst                 # Enable expansion in prompt string
+
+    RPROMPT="%{${line_up}%}"'$(get_return_status) ${newline} $(get_git_status)'"%{${line_down}%}"
+    PROMPT="${current_dir}%f${newline}${user_prompt}%f "
+}
+
+set_prompt

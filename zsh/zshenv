@@ -23,6 +23,8 @@ export VISUAL="code"
 export SUDO_EDITOR="rnano"
 export BROWSER="firefox"
 
+export PROMPT_THEME="arch"
+
 # ==================================================
 # Software
 # ==================================================
