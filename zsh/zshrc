@@ -37,7 +37,9 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 
 source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
+fpath=($DOTFILES/zsh/completions $fpath)
 
 # ==================================================
 # Load aliases & functions
