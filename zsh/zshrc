@@ -52,3 +52,9 @@ source $DOTFILES/zsh/functions.zsh
 
 fpath=($DOTFILES/zsh/prompt $fpath)
 autoload -Uz prompt && prompt
+
+
+# ==================================================
+# Local overrides
+# ==================================================
+if [ -f $ZDOTDIR/zshrc.local ]; then source $ZDOTDIR/zshrc.local; fi
