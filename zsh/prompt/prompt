@@ -6,4 +6,8 @@ local line_up=$'\e[1A'
 local line_down=$'\e[1B'
 local newline=$'\n'
 
+# Apply wal if needed
+local wal=$HOME/.cache/wal/sequences
+if [ -f $wal ]; then (cat ~/.cache/wal/sequences); fi
+
 source "$DOTFILES/zsh/prompt/themes/$PROMPT_THEME"
