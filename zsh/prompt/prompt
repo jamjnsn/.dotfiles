@@ -1,7 +1,11 @@
-# ==================================================
-# Special characters
-# ==================================================
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    local os=$NAME
+else
+	local os=Unknown
+fi
 
+# Special characters
 local line_up=$'\e[1A'
 local line_down=$'\e[1B'
 local newline=$'\n'

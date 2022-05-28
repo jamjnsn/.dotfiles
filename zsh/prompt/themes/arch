@@ -5,8 +5,17 @@
 local current_dir=$'%F{white}%~%B'
 local prompt_symbol=''
 
+# Determine OS icon
+case $os in
+Ubuntu)			local os_icon=' '	;;
+Debian)			local_os_icon=' '	;;
+"Arch Linux")	local os_icon=' '	;;
+*)				local os_icon=' '	;;
+esac
+
+# Set prompt based on current UID
 if [[ $UID -eq 0 ]]; then
-	local user_prompt="%F{red} %F{yellow}${prompt_symbol}%F{red}${prompt_symbol}%F{yellow}${prompt_symbol}"
+	local user_prompt="%F{red}${os_icon} %F{yellow}${prompt_symbol}%F{red}${prompt_symbol}%F{yellow}${prompt_symbol}"
 else
 	local user_prompt="%F{cyan} %F{magenta}${prompt_symbol}%F{cyan}${prompt_symbol}%F{green}${prompt_symbol}"
 fi
@@ -47,7 +56,7 @@ local set_prompt () {
     add-zsh-hook precmd prompt_precmd   # Set pre-command prompt
     setopt prompt_subst                 # Enable expansion in prompt string
 
-    RPROMPT="%{${line_up}%}"'$(get_return_status) ${newline} $(get_git_status)'"%{${line_down}%}"
+    # RPROMPT="%{${line_up}%}"'$(get_return_status) ${newline} $(get_git_status)'"%{${line_down}%}"
     PROMPT="${current_dir}%f${newline}${user_prompt}%f "
 }
 
