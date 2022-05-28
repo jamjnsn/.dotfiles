@@ -70,3 +70,11 @@ autoload -Uz prompt && prompt
 # ==================================================
 
 if [ -f $ZDOTDIR/zshrc.local ]; then source $ZDOTDIR/zshrc.local; fi
+
+# ==================================================
+# Auto tmux
+# ==================================================
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+	exec tmux new-session -A -s main
+fi
