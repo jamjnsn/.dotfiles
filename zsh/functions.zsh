@@ -103,6 +103,7 @@ ex() {
 		case $1 in
 			*.tar.bz2)	tar -xjf $1 -one-top-level=$outdir  ;;
 			*.tar.gz)	tar xzf $1 --one-top-level=$outdir  ;;
+			*.tgz)		tar xzf $1 --one-top-level=$outdir	;;
 			*.zip)		unzip $1 -d $outdir				 	;;
 			*.7z)		7z x $1 -o$outdir					;;
 			
