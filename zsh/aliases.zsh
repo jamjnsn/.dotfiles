@@ -107,7 +107,7 @@ alias root="sudo -i"
 # Quickly download via yt-dlp
 alias ytdld="yt-dlp -P ~/Downloads"
 
-# Remind myself to use rip for file deletion
-if (( $+commands[rip] )); then
-	alias rm="echo Use 'rip'."
+# Remind myself to use trash-cli for file deletion
+if (( $+commands[trash] )); then
+	alias rm="echo Use 'trash'."
 fi
