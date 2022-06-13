@@ -1,0 +1,53 @@
+#!/usr/bin/env zsh
+user=false
+args=()
+
+for arg in "$@"
+do
+	case $arg in
+		-u|--user)
+			user=true
+			shift
+			;;
+		*)
+			args+=($arg)
+	esac
+done
+
+if $user
+then
+	command="systemctl --user"
+else
+	command="sudo systemctl"
+fi
+
+service_name=$1
+service_cmd=$2
+
+case $service_cmd in
+	enable|e)
+		command="$command enable $service_name && $command start $service_name"
+		;;
+	start|s)
+		command="$command start $service_name"
+		;;
+	disable|d)
+		command="$command disable $service_name && $command stop $service_name"
+		;;
+	stop|x)
+		command="$command stop $service_name"
+		;;
+	reload|l)
+		command="$command reload $service_name"
+		;;
+	reload|r)
+		command="$command restart $service_name"
+		;;
+	*)
+		echo "Usage: service [-u: Current user] service_name command"
+		return
+		;;
+esac
+
+echo "> $command"
+eval "$command"
