@@ -100,6 +100,7 @@ append_path $GOPATH/bin
 append_path $COMPOSER_HOME/vendor/bin
 append_path $CARGO_HOME/bin
 append_path $HOME/.local/bin
+append_path $DOTFILES/scripts
 
 export PATH
 
