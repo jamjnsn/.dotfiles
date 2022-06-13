@@ -4,10 +4,14 @@ window:
     x: 20
     y: 20
 font:
-  size: 13.0
+  size: 12.0
   normal:
     family: "CaskaydiaCove Nerd Font"
 key_bindings:
   - { key: N, mods: Control, action: SpawnNewInstance }
+shell:
+  program: /usr/bin/zsh
+  args:
+    - --login
 import:
-  - ~/.dotfiles/alacritty/everblush.yml
+  - ~/.dotfiles/alacritty/one-dark.yml
