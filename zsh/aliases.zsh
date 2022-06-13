@@ -15,9 +15,6 @@ fi
 # Use zoxide (z) instead of cd
 if command -v zoxide &> /dev/null; then alias cd="z"; fi
 
-# Use sticky ssh function instead of ssh
-alias ssh="sssh"
-
 # ==================================================
 # 	zsh directory history
 # ==================================================
@@ -91,6 +88,15 @@ alias dcupdate="dc pull && dc up -d"
 alias apt="sudo apt"
 
 # ==================================================
+# 	Kitty
+# ==================================================
+
+if [[ "$TERM" == "xterm-kitty" ]]; then
+	alias ssh="kitty +kitten \ssh"
+	alias icat="kitty +kitten icat"
+fi
+
+# ==================================================
 # 	pacman
 # ==================================================
 
@@ -106,6 +112,9 @@ alias root="sudo -i"
 
 # Quickly download via yt-dlp
 alias ytdld="yt-dlp -P ~/Downloads"
+
+# Use tmux with a single session
+alias tmux-single="tmux new-session -A -s main"
 
 # Remind myself to use trash-cli for file deletion
 if (( $+commands[trash] )); then
