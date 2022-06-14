@@ -2,37 +2,43 @@
 command=$1
 shift
 
+packages=()
+purge=true
+
+for arg in "$@"man
+do
+	case $arg in
+		--nopurge)
+			purge=false
+			shift
+			;;
+		--*|-*)
+			shift
+			;;
+		*)
+			packages+=$arg
+			shift
+		;;
+	esac
+done
+
 case $command in
 	install|i)
-		sudo pacman -Syu --needed $1
+		sudo pacman -Syu --needed "${packages[@]}"
 		;;
 	upgrade|u)
 		sudo pacman -Syu
 		;;
 	remove|r)
-		target=$1
-		purge=true
-		shift
-
-		for arg in "$@"
-		do
-			case $arg in
-				--nopurge)
-					purge=false
-					;;
-				*) shift ;;
-			esac
-		done
-
 		if $purge
 		then
-			sudo pacman -Rns $1
+			sudo pacman -Rns "${packages[@]}"
 		else
-			sudo pacman -Rs $1
+			sudo pacman -Rs "${packages[@]}"
 		fi
 		;;
 	search|s)
-		sudo pacman -Ss $1
+		sudo pacman -Ss "${packages[@]}"
 		;;
 	autoremove)
 		sudo pacman -Qdtq | sudo pacman -Rs -
