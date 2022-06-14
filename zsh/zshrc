@@ -50,6 +50,8 @@ source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 append_fpath $DOTFILES/zsh/plugins/zsh-completions/src
 append_fpath $DOTFILES/zsh/completions
 
+eval "$(fnm env --use-on-cd)"
+
 # ==================================================
 # Load aliases & functions
 # ==================================================
