@@ -43,6 +43,9 @@ case $service_cmd in
 	reload|r)
 		command="$command restart $service_name"
 		;;
+	status)
+		command="$command status $service_name"
+		;;
 	*)
 		echo "Usage: service [-u: Current user] service_name command"
 		return
