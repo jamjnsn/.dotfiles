@@ -5,7 +5,7 @@ shift
 packages=()
 purge=true
 
-for arg in "$@"man
+for arg in "$@"
 do
 	case $arg in
 		--nopurge)
