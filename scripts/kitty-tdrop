@@ -1,2 +1,0 @@
-#!/bin/bash
-exec tdrop -ma -A -h 100% -y 0 kitty -c=/home/jamie/.dotfiles/kitty/kitty-tdrop.conf --class=kitty-tdrop

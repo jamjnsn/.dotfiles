@@ -1,0 +1,2 @@
+#!/bin/bash
+exec tdrop -ma -A -h 100% -y 0 alacritty --class=kitty-tdrop -o window.decorations=none
