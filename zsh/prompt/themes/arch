@@ -8,7 +8,7 @@ local prompt_symbol=''
 # Determine OS icon
 case $os in
 Ubuntu)			local os_icon=' '	;;
-Debian)			local_os_icon=' '	;;
+Debian)			local os_icon=' '	;;
 "Arch Linux")	local os_icon=' '	;;
 *)				local os_icon=' '	;;
 esac
