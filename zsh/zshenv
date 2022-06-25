@@ -21,7 +21,9 @@ export CONFIG=$XDG_CONFIG_HOME
 export EDITOR="nano"
 export VISUAL="code"
 export SUDO_EDITOR="rnano"
+
 export BROWSER="firefox"
+export TERMINAL="alacritty"
 
 export PROMPT_THEME="arch"
 
