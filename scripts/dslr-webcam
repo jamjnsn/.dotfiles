@@ -1,4 +1,13 @@
 #!/bin/bash
-v4l2-ctl -d /dev/video1 -c timeout=1000
-gphoto2 --summary
-gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 0 -vf 'fade=in:0:10,fps=fps=30' -f v4l2 /dev/video1
+
+log=/tmp/dslr-webcam.log
+echo -n > $log
+
+v4l2-ctl -d /dev/video1 -c timeout=1000 | tee -a $log
+
+echo "Starting webcam on /dev/video1" | tee -a $log
+
+gphoto2 --summary | tee -a $log
+gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 0 -vf 'fade=in:0:10,fps=fps=30' -f v4l2 /dev/video1 2>> $log
+
+echo "Webcam stopped" | tee -a $log
