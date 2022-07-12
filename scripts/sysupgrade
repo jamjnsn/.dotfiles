@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+reset='\033[0m'
+blue='\033[0;34m'
+
+echo "${bold}${blue} Upgrading system${normal}${reset}"
+sudo pacman -Syu
+
+echo "\n${bold}${blue} Updating crates${normal}${reset}"
+cargo install-update -a
+
+echo "\n${bold}${blue}ﰩ Updating Flatpaks${normal}${reset}"
+flatpak update
