@@ -31,19 +31,13 @@ ln -s "$DOTFILES/kitty/kitty.conf" "$XDG_CONFIG_HOME/kitty/kitty.conf"
 # ==================================================
 
 mkdir -p $XDG_CONFIG_HOME/tmux
-ln -s "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
+ln -s "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
 # ==================================================
 # nano
 # ==================================================
 
 ln -s "$DOTFILES/nano/nanorc" "$HOME/.nanorc"
-
-# ==================================================
-# lf
-# ==================================================
-
-ln -s $DOTFILES/lf $CONFIG/lf
 
 # ==================================================
 # Git
