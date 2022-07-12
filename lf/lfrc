@@ -22,8 +22,8 @@ set hidden							# Show hidden files
 set drawbox							# Enable border around folders
 set icons							# Enable icons (~/.config/lf/icons)
 set autoquit						# Automatically quit server when there are no clients left connected
-set previewer '~/.config/lf/scope'	# File preview script
 set scrolloff 10					# Space at top and bottom of screen
+set mouse on						# Allow mouse input
 
 # Key maps
 map <enter> open
@@ -40,14 +40,10 @@ map O $mimeopen --ask $f
 # Custom open command
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
+	echo $f
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
-		image/png) gwenview $fx &;;
-		image/j*) gwenview $fx &;;
-		video/*) vlc $fx;;
-		audio/*) vlc $fx;;
-		*/pdf) okular $fx &;;
-        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+        *) kde-open $fx &> /dev/null;;
     esac
 }}
 
