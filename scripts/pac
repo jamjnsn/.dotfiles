@@ -43,6 +43,12 @@ case $command in
 	autoremove)
 		sudo pacman -Qdtq | sudo pacman -Rs -
 		;;
+	asexplicit|e)
+		sudo pacman -D --asexplicit "${packages[@]}"
+		;;
+	asdeps|d)
+		sudo pacman -D --asdeps "${packages[@]}"
+		;;
 	# List explicitly installed packages
 	list-installed)
 		sudo pacman -Qe
