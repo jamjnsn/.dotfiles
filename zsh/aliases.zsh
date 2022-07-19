@@ -107,6 +107,12 @@ alias pacman-autoremove="pacman -Qdtq | pacman -Rs -"
 # 	Everything else
 # ==================================================
 
+# pueue
+alias q=pueue
+
+# Use cargo-update to update all crates
+alias cargo-update="cargo install-update -a"
+
 # Switch to root terminal
 alias root="sudo -i"
 
@@ -120,3 +126,6 @@ alias tmux-single="tmux new-session -A -s main"
 if (( $+commands[trash] )); then
 	alias rm="echo Use 'trash'."
 fi
+
+# Update Grub config
+alias update-grub="sudo grub-mkconfig -o /boot/grub/gub.cfg"

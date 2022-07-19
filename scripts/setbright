@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+brightness=$1
+
+if (($brightness >= 1 && $brightness <= 100)); then
+	ddcutil setvcp 10 $1 --display 1
+	ddcutil setvcp 10 $1 --display 2
+else
+	echo "Please provide a valid brightness value (1-100)."
+fi
