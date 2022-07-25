@@ -20,13 +20,6 @@ mkdir -p $XDG_CONFIG_HOME/alacritty
 ln -s "$DOTFILES/alacritty/alacritty.yml" "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
 
 # ==================================================
-# kitty (because I can't decide which term to use)
-# ==================================================
-
-mkdir -p $XDG_CONFIG_HOME/kitty
-ln -s "$DOTFILES/kitty/kitty.conf" "$XDG_CONFIG_HOME/kitty/kitty.conf"
-
-# ==================================================
 # tmux
 # ==================================================
 
@@ -38,6 +31,12 @@ ln -s "$DOTFILES/tmux/tmux.conf" "$XDG_CONFIG_HOME/tmux/tmux.conf"
 # ==================================================
 
 ln -s "$DOTFILES/nano/nanorc" "$HOME/.nanorc"
+
+# ==================================================
+# lf
+# ==================================================
+
+ln -s "$DOTFILES/lf" "$CONFIG/lf"
 
 # ==================================================
 # Git
