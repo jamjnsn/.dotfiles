@@ -151,7 +151,7 @@ tmp () {
 rlzsh () {
 	source $HOME/.zshenv
 	source $ZDOTDIR/.zshrc
-	exec $(which zsh)
+	exec /usr/bin/env zsh
 }
 
 # =================================================
@@ -170,4 +170,12 @@ lfcd () {
             fi
         fi
     fi
+}
+
+# =================================================
+# Quick maths
+# =================================================
+
+m() {
+  python3 -c "from math import *; print($*)"
 }
