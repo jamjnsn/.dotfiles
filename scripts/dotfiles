@@ -1,0 +1,61 @@
+#!/usr/bin/env zsh
+
+#!/usr/bin/env zsh
+
+command=$1
+shift
+
+for arg in "$@"
+do
+	case $arg in
+		--*|-*)
+			shift
+			;;
+		*)
+			packages+=$arg
+			shift
+		;;
+	esac
+done
+
+case $command in
+	install|i)
+		sudo pacman -Syu --needed "${packages[@]}"
+		;;
+	upgrade|u)
+		sudo pacman -Syu
+		;;
+	remove|r)
+		if $purge
+		then
+			sudo pacman -Rns "${packages[@]}"
+		else
+			sudo pacman -Rs "${packages[@]}"
+		fi
+
+		# Clean up cache for uninstalled packages
+		sudo paccache -ruk0
+		;;
+	search|s)
+		sudo pacman -Ss "${packages[@]}"
+		;;
+	autoremove|ar)
+		sudo pacman -Qdtq | sudo pacman -Rs -
+		;;
+	asexplicit|e)
+		sudo pacman -D --asexplicit "${packages[@]}"
+		;;
+	asdeps|d)
+		sudo pacman -D --asdeps "${packages[@]}"
+		;;
+	info|q)
+		sudo pacman -Qi "${packages[@]}"
+		;;
+	# List explicitly installed packages
+	list-installed|l)
+		sudo pacman -Qe
+		;;
+	*)
+		echo "Usage: pac command [args]"
+		;;
+esac
