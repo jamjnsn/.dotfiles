@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 command=$1
 shift
 
@@ -36,11 +37,14 @@ case $command in
 		else
 			sudo pacman -Rs "${packages[@]}"
 		fi
+
+		# Clean up cache for uninstalled packages
+		sudo paccache -ruk0
 		;;
 	search|s)
 		sudo pacman -Ss "${packages[@]}"
 		;;
-	autoremove)
+	autoremove|ar)
 		sudo pacman -Qdtq | sudo pacman -Rs -
 		;;
 	asexplicit|e)
@@ -49,13 +53,12 @@ case $command in
 	asdeps|d)
 		sudo pacman -D --asdeps "${packages[@]}"
 		;;
-	# List explicitly installed packages
-	list-installed)
-		sudo pacman -Qe
+	info|q)
+		sudo pacman -Qi "${packages[@]}"
 		;;
-	# List explicitly installed AUR packages
-	list-aur)
-		sudo pacman -Qqe
+	# List explicitly installed packages
+	list-installed|l)
+		sudo pacman -Qe
 		;;
 	*)
 		echo "Usage: pac command [args]"
