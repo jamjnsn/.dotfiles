@@ -24,6 +24,7 @@ case $command in
 			cd $DOTFILES && \
 			git add -A && \
 			git commit -m "Automatic commit" -m $changes && \
+			git push && \
 		)
 		;;
 	*)
