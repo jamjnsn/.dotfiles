@@ -1,0 +1,59 @@
+#!/usr/bin/env zsh
+
+source zshenv
+
+command=$1
+shift
+
+case $command in
+	update|u|install|i)
+		# Pull from origin
+		git pull
+
+		# Create needed directories
+		mkdir -p $LOCAL_BIN $LOCAL_SRC
+
+		# Set git globals
+		git config --global user.name "Jamie Jansen"
+		git config --global user.email "jamie@jnsn.me"
+
+		# Install config files
+		typeset -A configs
+		configs=(
+		"alacritty"		"$CONFIG/alacritty"
+		"kitty"			"$CONFIG/kitty"
+		"tmux"			"$CONFIG/tmux"
+		"lf"			"$CONFIG/lf"
+		"nano/nanorc"	"$HOME/.nanorc"
+		"zshenv"		"$HOME/.zshenv"
+		"zsh"			"$ZDOTDIR"
+		"dot"			"$LOCAL_BIN/dot"
+		"scripts"		"$LOCAL_BIN/scripts"
+		)
+
+		for key ("${(@k)configs}"); do
+			src=$(pwd)/$key
+			dst=$configs[$key]
+
+			mkdir -p $(dirname -- $dst)
+			ln -sfvn $src $dst
+		done
+		;;
+	save|s)
+		while getopts m: flag
+		do
+			case "${flag}" in
+				m) message=${OPTARG};;
+			esac
+		done
+
+		[ -z "$message" ] && echo "No commit message provided" && return 1
+
+		git add -A && git commit -m "$message" && git push
+		;;
+	*)
+		echo "Command not found: $command"
+		;;
+esac
+
+

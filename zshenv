@@ -4,15 +4,22 @@
 export DOTFILES="$HOME/.dotfiles"
 
 # ==================================================
-# XDG
+# Directories
 # ==================================================
 
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_STATE_HOME=$HOME/.local/state
+# XDG base directory paths
+export LOCAL_DIR="$HOME/.local"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$LOCAL_DIR/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$LOCAL_DIR/.local/state"
+
+# Other dirs
 export CONFIG="$XDG_CONFIG_HOME"
+
+export LOCAL_SRC="$LOCAL_DIR/src"
+export LOCAL_BIN="$LOCAL_DIR/bin"
 
 # ==================================================
 # Defaults
@@ -102,7 +109,8 @@ append_path $NPM_BIN
 append_path $GOPATH/bin
 append_path $COMPOSER_HOME/vendor/bin
 append_path $CARGO_HOME/bin
-append_path $HOME/.local/bin
+append_path $LOCAL_BIN
+append_path $LOCAL_BIN/scripts
 append_path $DOTFILES/scripts
 
 export PATH

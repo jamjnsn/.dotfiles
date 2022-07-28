@@ -44,11 +44,11 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 
 if command -v zoxide &> /dev/null; then eval "$(zoxide init zsh)"; fi
 
-source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $DOTFILES/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-append_fpath $DOTFILES/zsh/plugins/zsh-completions/src
-append_fpath $DOTFILES/zsh/completions
+append_fpath $ZDOTDIR/plugins/zsh-completions/src
+append_fpath $ZDOTDIR/completions
 
 eval "$(fnm env --use-on-cd)"
 
@@ -89,14 +89,14 @@ zle -N _zlf_handler
 # Load aliases & functions
 # ==================================================
 
-source $DOTFILES/zsh/aliases.zsh
-source $DOTFILES/zsh/functions.zsh
+source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/functions.zsh
 
 # ==================================================
 # Prompt
 # ==================================================
 
-append_fpath $DOTFILES/zsh/prompt
+append_fpath $ZDOTDIR/prompt
 autoload -Uz prompt && prompt
 
 # ==================================================

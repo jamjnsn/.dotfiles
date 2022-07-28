@@ -10,4 +10,4 @@ local line_up=$'\e[1A'
 local line_down=$'\e[1B'
 local newline=$'\n'
 
-source "$DOTFILES/zsh/prompt/themes/$PROMPT_THEME"
+source "$ZDOTDIR/prompt/themes/$PROMPT_THEME"
