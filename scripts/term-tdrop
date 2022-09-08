@@ -1,2 +1,2 @@
 #!/bin/bash
-exec tdrop -ma -A -h 100% -y 0 $TERMINAL --class=terminal-tdrop -o window.decorations=none
+exec tdrop -ma --session Dropdown -A -h 100% -y 0 kitty -o hide_window_decorations=yes --class=terminal-tdrop
