@@ -129,3 +129,9 @@ fi
 
 # Update Grub config
 alias update-grub="sudo grub-mkconfig -o /boot/grub/gub.cfg"
+
+# Shortcut to interact with virt-manager using virsh
+alias vman="virsh --connect qemu:///system"
+
+alias yay="paru"
+alias nay="paru -Rns"
