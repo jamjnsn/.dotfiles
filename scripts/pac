@@ -57,7 +57,7 @@ case $command in
 		sudo pacman -Qi "${packages[@]}"
 		;;
 	# List explicitly installed packages
-	list-installed|l)
+	list-installed|ls)
 		sudo pacman -Qe
 		;;
 	*)
