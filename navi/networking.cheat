@@ -1,0 +1,7 @@
+% Networking
+
+# List all currently listening ports
+sudo lsof -i -P -n | grep LISTEN
+
+# Find external/public IP address
+dig +short myip.opendns.com @resolver1.opendns.com

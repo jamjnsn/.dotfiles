@@ -29,6 +29,7 @@ case $command in
 		"zsh"			"$ZDOTDIR"
 		"dot"			"$LOCAL_BIN/dot"
 		"scripts"		"$LOCAL_BIN/scripts"
+		"navi"			"$XDG_DATA_HOME/navi/cheats/personal"
 		)
 
 		for key ("${(@k)configs}"); do
