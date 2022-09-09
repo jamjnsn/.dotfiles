@@ -48,8 +48,8 @@ local set_prompt () {
     add-zsh-hook precmd prompt_precmd   # Set pre-command prompt
     setopt prompt_subst                 # Enable expansion in prompt string
 
-    # RPROMPT="%{${line_up}%}"'$(get_return_status) ${newline} $(get_git_status)'"%{${line_down}%}"
-    PROMPT="${current_dir}%f${newline}${user_prompt}%f "
+    RPROMPT="%{${line_up}%}"'$(get_return_status) ${newline} '"%{${line_down}%}"
+    PROMPT="${current_dir} "'$(get_git_status)'" %K{clear} %f${newline}$reset_color${user_prompt}%f $reset_color"
 }
 
 set_prompt
