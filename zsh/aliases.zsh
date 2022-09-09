@@ -12,8 +12,10 @@ else
     alias ls="ls --color=auto"
 fi
 
-# Use zoxide (z) instead of cd
-if command -v zoxide &> /dev/null; then alias cd="z"; fi
+# Use zoxide instead of cd
+[ -x "$(command -v zoxide)" ] && alias cd="z"
+
+alias dig="dog"
 
 # ==================================================
 # 	zsh directory history
@@ -48,17 +50,6 @@ if (( $+commands[grc] )); then
 	alias ping="grc \ping"
 	alias tail="grc \tail"
 fi
-
-# ==================================================
-# 	WSL shortcuts
-# ==================================================
-
-alias cmd="cmd.exe"
-alias explore="explorer.exe ."
-
-alias pwsh="/mnt/c/Program\ Files/PowerShell/7/pwsh.exe"
-alias supwsh="powershell.exe Start-Process -Verb runas -FilePath wsl"
-alias winget="pwsh -Command winget"
 
 # ==================================================
 # 	Laravel
@@ -119,19 +110,12 @@ alias root="sudo -i"
 # Quickly download via yt-dlp
 alias ytdld="yt-dlp -P ~/Downloads"
 
-# Use tmux with a single session
-alias tmux-single="tmux new-session -A -s main"
-
-# Remind myself to use trash-cli for file deletion
-if (( $+commands[trash] )); then
-	alias rm="echo Use 'trash'."
-fi
-
 # Update Grub config
 alias update-grub="sudo grub-mkconfig -o /boot/grub/gub.cfg"
 
 # Shortcut to interact with virt-manager using virsh
 alias vman="virsh --connect qemu:///system"
 
+# AUR helper aliases
 alias yay="paru"
 alias nay="paru -Rns"
