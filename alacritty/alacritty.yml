@@ -10,6 +10,9 @@ font:
     family: "JetBrainsMono Nerd Font"
 key_bindings:
   - { key: N, mods: Control, action: SpawnNewInstance }
+  - { key: Up, mods: Control, chars: "cd ../\x0D" }
+  - { key: Right, mods: Control, chars: "\x1BF" }
+  - { key: Left, mods: Control, chars: "\x1BB" }
 shell:
   program: /usr/bin/zsh
   args:
