@@ -5,6 +5,8 @@ else
 	local os=Unknown
 fi
 
+local host=$(hostname -s)
+
 # Special characters
 local line_up=$'\e[1A'
 local line_down=$'\e[1B'
