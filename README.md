@@ -1,3 +1,8 @@
+# Install public keys
+```
+curl -o ~/.ssh/authorized_keys https://github.com/jamjnsn.keys
+```
+
 # Install dotfiles
 ```
 git clone https://github.com/jamjnsn/.dotfiles.git ~/.dotfiles
