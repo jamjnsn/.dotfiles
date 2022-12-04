@@ -95,6 +95,12 @@ alias pacman="sudo pacman"
 alias pacman-autoremove="pacman -Qdtq | pacman -Rs -" 
 
 # ==================================================
+# 	WSL
+# ==================================================
+
+alias winget="powershell.exe -Command winget"
+
+# ==================================================
 # 	Everything else
 # ==================================================
 

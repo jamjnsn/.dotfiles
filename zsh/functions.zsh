@@ -183,6 +183,7 @@ m() {
 # =================================================
 # Search packages for commands when not found
 # =================================================
+
 command_not_found_handler() {
     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
     printf 'zsh: command not found: %s\n' "$1"
@@ -208,4 +209,18 @@ command_not_found_handler() {
         done
     fi
     return 127
+}
+
+# =================================================
+# Run PowerShell or PowerShell command
+# =================================================
+
+pwsh() {
+	command=$1
+
+	if [ -z "$command" ]; then
+		powershell.exe -NoExit -Command "& {Set-Location ~}"
+	else
+		powershell.exe $@
+	fi
 }
