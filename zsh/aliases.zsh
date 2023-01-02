@@ -12,6 +12,9 @@ else
     alias ls="ls --color=auto"
 fi
 
+# ls shortcuts
+alias ll="ls -la"
+
 # Use zoxide instead of cd
 [ -x "$(command -v zoxide)" ] && alias cd="z"
 

@@ -5,7 +5,7 @@
 # ==================================================
 
 sssh() {
-	while ! \ssh "$@"; do sleep 0.5; done
+    while ! \ssh "$@"; do sleep 0.5; done
 }
 
 # ==================================================
@@ -13,7 +13,7 @@ sssh() {
 # ==================================================
 
 mkcd() {
-	mkdir -p $1 && cd $1
+    mkdir -p $1 && cd $1
 }
 
 # ==================================================
@@ -21,7 +21,7 @@ mkcd() {
 # ==================================================
 
 docksh() {
-	docker exec -it $1 /bin/bash
+    docker exec -it $1 /bin/bash
 }
 
 # ==================================================
@@ -29,8 +29,8 @@ docksh() {
 # ==================================================
 
 chmodr() {
-	find $1 -type d -print0 | xargs -0 chmod 0775
-	find $1 -type f -print0 | xargs -0 chmod 0664
+    find $1 -type d -print0 | xargs -0 chmod 0775
+    find $1 -type f -print0 | xargs -0 chmod 0664
 }
 
 # ==================================================
@@ -38,34 +38,34 @@ chmodr() {
 # ==================================================
 
 ngxreload() {
-	sudo service nginx reload
+    sudo service nginx reload
 }
 
 ngxedsite() {
-	file=/etc/nginx/sites-available/$1
-	sudo nano "$file"
-	ngxreload
+    file=/etc/nginx/sites-available/$1
+    sudo nano "$file"
+    ngxreload
 }
 
 ngxensite() {
-	sudo ln -sf "/etc/nginx/sites-available/$1" "/etc/nginx/sites-enabled/$1"
-	ngxreload
+    sudo ln -sf "/etc/nginx/sites-available/$1" "/etc/nginx/sites-enabled/$1"
+    ngxreload
 }
 
 ngxdissite() {
-	file=/etc/nginx/sites-enabled/$1
-	sudo unlink "$file"
+    file=/etc/nginx/sites-enabled/$1
+    sudo unlink "$file"
 }
 
 ngxmksite() {
-	file=/etc/nginx/sites-available/$1
-	
-	if [ -f "$file" ]; then
-		echo "Site already exists."
-	else
-		sudo cp "/etc/nginx/templates/default" "$file"
-		sudo nano $file
-	fi
+    file=/etc/nginx/sites-available/$1
+    
+    if [ -f "$file" ]; then
+        echo "Site already exists."
+    else
+        sudo cp "/etc/nginx/templates/default" "$file"
+        sudo nano $file
+    fi
 }
 
 # ==================================================
@@ -73,62 +73,62 @@ ngxmksite() {
 # ==================================================
 
 reboot2win() {
-	windows_title=$(grep -i "^menuentry 'Windows" /boot/grub/grub.cfg | cut -d "'" -f 2)
-	sudo grub-reboot "$windows_title" && sudo reboot
+    windows_title=$(grep -i "^menuentry 'Windows" /boot/grub/grub.cfg | cut -d "'" -f 2)
+    sudo grub-reboot "$windows_title" && sudo reboot
 }
-	
+
 # ==================================================
 # Simplified archive extraction
 # ==================================================
 
 ex() {
-	# Set output directory
-	if [ -z "$2" ]; then
-		outdir="${1%%.*}"
-	else
-		outdir="$2"
-	fi
-	
-	# Ensure output directory is valid
-	if [ -f $outdir ]; then
-		echo "Can't extract to \"$outdir\": file exists"
-		return
-	elif [ -d $outdir ]; then
-		echo "Can't extract to \"$outdir\": directory exists"
-		return
-	fi
-	
-	# Attempt extraction based on filename
-	if [ -f $1 ]; then
-		case $1 in
-			*.tar.bz2)	tar -xjf $1 -one-top-level=$outdir  ;;
-			*.tar.gz)	tar xzf $1 --one-top-level=$outdir  ;;
-			*.tgz)		tar xzf $1 --one-top-level=$outdir	;;
-			*.zip)		unzip $1 -d $outdir				 	;;
-			*.7z)		7z x $1 -o$outdir					;;
-			
-			*)
-				echo "\"$1\" is not a supported archive"
-				return
-			;;
-		esac
-		
-		echo "Extracted to 📁$outdir"
-	else
-		echo "\"$1\" is not a valid file"
-	fi
+    # Set output directory
+    if [ -z "$2" ]; then
+        outdir="${1%%.*}"
+    else
+        outdir="$2"
+    fi
+    
+    # Ensure output directory is valid
+    if [ -f $outdir ]; then
+        echo "Can't extract to \"$outdir\": file exists"
+        return
+        elif [ -d $outdir ]; then
+        echo "Can't extract to \"$outdir\": directory exists"
+        return
+    fi
+    
+    # Attempt extraction based on filename
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)	tar -xjf $1 -one-top-level=$outdir  ;;
+            *.tar.gz)	tar xzf $1 --one-top-level=$outdir  ;;
+            *.tgz)		tar xzf $1 --one-top-level=$outdir	;;
+            *.zip)		unzip $1 -d $outdir				 	;;
+            *.7z)		7z x $1 -o$outdir					;;
+            
+            *)
+                echo "\"$1\" is not a supported archive"
+                return
+            ;;
+        esac
+        
+        echo "Extracted to 📁$outdir"
+    else
+        echo "\"$1\" is not a valid file"
+    fi
 }
 
 # ==================================================
-# Make temporary directory for the  
+# Make temporary directory for the
 # duration of a subshell.
 # ==================================================
 
 tmp () {
     (
-        export MY_SHLVL=tmp:$MY_SHLVL 
-        export od=$PWD 
-        export tmp=$(mktemp -d) 
+        export MY_SHLVL=tmp:$MY_SHLVL
+        export od=$PWD
+        export tmp=$(mktemp -d)
         trap "rm -rf $tmp" 0
         cd $tmp
         if [ -z "$1" ]
@@ -149,9 +149,9 @@ tmp () {
 # ==================================================
 
 rlzsh () {
-	source $HOME/.zshenv
-	source $ZDOTDIR/.zshrc
-	exec /usr/bin/env zsh
+    source $HOME/.zshenv
+    source $ZDOTDIR/.zshrc
+    exec /usr/bin/env zsh
 }
 
 # =================================================
@@ -177,7 +177,7 @@ lfcd () {
 # =================================================
 
 m() {
-  python3 -c "from math import *; print($*)"
+    python3 -c "from math import *; print($*)"
 }
 
 # =================================================
@@ -216,11 +216,53 @@ command_not_found_handler() {
 # =================================================
 
 pwsh() {
-	command=$1
+    command=$1
+    
+    if [ -z "$command" ]; then
+        powershell.exe -NoExit -Command "& {Set-Location ~}"
+    else
+        powershell.exe $@
+    fi
+}
 
-	if [ -z "$command" ]; then
-		powershell.exe -NoExit -Command "& {Set-Location ~}"
-	else
-		powershell.exe $@
-	fi
+# =================================================
+# Create and/or activate Python venv in directory
+# =================================================
+
+venv() {
+    python3 -m venv .venv && . .venv/bin/activate && python3 -m pip install --upgrade pip &> /dev/null
+}
+
+# =================================================
+# Take
+# - https://batsov.com/articles/2022/09/16/oh-my-zsh-fun-with-take
+# =================================================
+
+take() {
+    if [[ $1 =~ ^(https?|ftp).*\.tar\.(gz|bz2|xz)$ ]]; then
+        takeurl "$1"
+        elif [[ $1 =~ ^([A-Za-z0-9]\+@|https?|git|ssh|ftps?|rsync).*\.git/?$ ]]; then
+        takegit "$1"
+    else
+        takedir "$@"
+    fi
+}
+
+mkcd takedir() {
+    mkdir -p $@ && cd ${@:$#}
+}
+
+takegit() {
+    git clone "$1"
+    cd "$(basename ${1%%.git})"
+}
+
+takeurl() {
+    local data thedir
+    data="$(mktemp)"
+    curl -L "$1" > "$data"
+    tar xf "$data"
+    thedir="$(tar tf "$data" | head -n 1)"
+    rm "$data"
+    cd "$thedir"
 }

@@ -53,6 +53,12 @@ source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 append_fpath $ZDOTDIR/plugins/zsh-completions/src
 append_fpath $ZDOTDIR/completions
 
+# fnm
+if [ -x "$(command -v fnm)" ]; then
+    export PATH="/home/jamie/.local/share/fnm:$PATH"
+    eval "`fnm env`"
+fi
+
 # ==================================================
 # Load aliases & functions
 # ==================================================
