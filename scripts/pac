@@ -6,6 +6,11 @@ shift
 packages=()
 purge=true
 
+bold=$(tput bold)
+normal=$(tput sgr0)
+reset='\033[0m'
+blue='\033[0;34m'
+
 for arg in "$@"
 do
 	case $arg in
@@ -28,7 +33,13 @@ case $command in
 		sudo pacman -Syu --needed "${packages[@]}"
 		;;
 	upgrade|u)
+		echo "${bold}${blue} Upgrading system${normal}${reset}"
 		sudo pacman -Syu
+
+		if [ -x "$(command -v cargo)" ]; then
+			echo "\n${bold}${blue} Updating crates${normal}${reset}"
+			cargo install-update -a
+		fi
 		;;
 	remove|r)
 		if $purge
