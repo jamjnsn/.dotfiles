@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source zshenv
+source zsh/.zshenv
 
 command=$1
 shift
@@ -25,7 +25,6 @@ case $command in
 		"tmux"			"$CONFIG/tmux"
 		"lf"			"$CONFIG/lf"
 		"nano/nanorc"	"$HOME/.nanorc"
-		"zshenv"		"$HOME/.zshenv"
 		"zsh"			"$ZDOTDIR"
 		"dot"			"$LOCAL_BIN/dot"
 		"scripts"		"$LOCAL_BIN/scripts"
