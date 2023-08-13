@@ -40,6 +40,10 @@ export PROMPT_THEME="arch"
 
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
 
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
 # ==================================================
 # zsh
 # ==================================================
