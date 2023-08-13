@@ -9,7 +9,12 @@ while $waiting; do
     case $status in
         running)
             waiting=false
+
             looking-glass-client -C ~/.config/looking-glass/client.ini
+            sleep 1
+
+            wmctrl -r "Looking Glass (client)" -b add,below
+            wmctrl -r "Looking Glass (client)" -b add,skip_taskbar
             ;;
         paused)
             virsh --connect qemu:///system resume $domain
