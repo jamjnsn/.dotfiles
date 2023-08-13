@@ -1,0 +1,12 @@
+[eglFilter]
+order=downscale;ffxCAS;ffxFSR1
+downscale=no
+downscalePixelSize=2.000000
+downscaleHOffset=0.000000
+downscaleVOffset=0.000000
+downscaleFilter=0
+ffxFSR=no
+ffxFSRSharpness=1.000000
+ffxCAS=no
+ffxCASSharpness=0.255269
+
