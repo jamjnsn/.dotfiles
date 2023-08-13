@@ -47,10 +47,16 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 [ -x "$(command -v navi)" ] && eval "$(navi widget zsh)"
 [ -x "$(command -v fnm)" ] && eval "$(fnm env --use-on-cd)"
 
-source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+autoload -Uz add-zsh-hook
 
-append_fpath $ZDOTDIR/plugins/zsh-completions/src
+autoload -Uz compinit
+compinit
+
+# Installed via Pacman
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 append_fpath $ZDOTDIR/completions
 
 # fnm
@@ -75,7 +81,8 @@ append_fpath $ZDOTDIR/prompt
 autoload -Uz prompt && prompt
 
 # ==================================================
-# Local overrides
+# pfetch on start
 # ==================================================
 
-if [ -f $ZDOTDIR/zshrc.local ]; then source $ZDOTDIR/zshrc.local; fi
+echo "\n"
+pfetch

@@ -149,7 +149,7 @@ tmp () {
 # ==================================================
 
 rlzsh () {
-    source $HOME/.zshenv
+    source $ZDOTDIR/.zshenv
     source $ZDOTDIR/.zshrc
     exec /usr/bin/env zsh
 }

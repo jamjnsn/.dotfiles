@@ -72,30 +72,14 @@ alias adbrmv="adb shell pm uninstall --user 0"
 # 	Docker
 # ==================================================
 
-alias dc="docker-compose"
+alias dc="docker compose"
 alias dcupdate="dc pull && dc up -d"
-
-# ==================================================
-# 	apt
-# ==================================================
-
-alias apt="sudo apt"
-
-# ==================================================
-# 	Kitty
-# ==================================================
-
-if [[ "$TERM" == "xterm-kitty" ]]; then
-	alias ssh="kitty +kitten \ssh"
-	alias icat="kitty +kitten icat"
-fi
 
 # ==================================================
 # 	pacman
 # ==================================================
 
 alias pacman="sudo pacman"
-alias pacman-autoremove="pacman -Qdtq | pacman -Rs -" 
 
 # ==================================================
 # 	WSL
@@ -126,5 +110,5 @@ alias update-grub="sudo grub-mkconfig -o /boot/grub/gub.cfg"
 alias vman="virsh --connect qemu:///system"
 
 # AUR helper aliases
-alias yay="paru"
-alias nay="paru -Rns"
+alias yay="yay"
+alias nay="yay -Rns"

@@ -8,9 +8,9 @@ local prompt_symbol=''
 if [[ $host == "desky" ]]; then
     # Set prompt based on current UID
     if [[ $UID -eq 0 ]]; then
-        local user_prompt="%F{red} %F{yellow}${prompt_symbol}%F{red}${prompt_symbol}%F{yellow}${prompt_symbol}"
+        local user_prompt="%F{red}${prompt_symbol}"
     else
-        local user_prompt="%F{cyan} %F{magenta}${prompt_symbol}%F{cyan}${prompt_symbol}%F{green}${prompt_symbol}"
+        local user_prompt="%F{grey}${prompt_symbol}"
     fi
 else
     if [[ $UID -eq 0 ]]; then
