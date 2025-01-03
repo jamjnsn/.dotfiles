@@ -239,12 +239,15 @@ venv() {
 # =================================================
 
 take() {
-    if [[ $1 =~ ^(https?|ftp).*\.tar\.(gz|bz2|xz)$ ]]; then
-        takeurl "$1"
-        elif [[ $1 =~ ^([A-Za-z0-9]\+@|https?|git|ssh|ftps?|rsync).*\.git/?$ ]]; then
+    if [[ $1 =~ ^(https?|git|ssh|ftps?|rsync).*\.git$ ]]; then
         takegit "$1"
+    elif [[ $1 =~ ^.*://.*$ ]]; then
+        # Anything with a protocol is going to be a URL target for downloading
+        echo url
+        takeurl "$1"
     else
-        takedir "$@"
+        echo dir
+        # takedir "$@"
     fi
 }
 
@@ -257,12 +260,14 @@ takegit() {
     cd "$(basename ${1%%.git})"
 }
 
+takearchive() {
+    echo "takearchive not implemented."
+}
+
 takeurl() {
-    local data thedir
-    data="$(mktemp)"
-    curl -L "$1" > "$data"
-    tar xf "$data"
-    thedir="$(tar tf "$data" | head -n 1)"
-    rm "$data"
-    cd "$thedir"
+    echo "takeurl not implemented."
+    # local tmpdir
+    # tmpdir="$(mktemp)"
+    # wget -P $tmpdir $1
+    # cd $tmpdir
 }
