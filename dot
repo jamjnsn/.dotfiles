@@ -25,7 +25,7 @@ case $command in
 		"tmux"			"$CONFIG/tmux"
 		"lf"			"$CONFIG/lf"
 		"looking-glass"	"$CONFIG/looking-glass"
-		"nano/nanorc"	"$HOME/.nanorc"
+		"nano"			"$CONFIG/nano"
 		"zshenv"		"$HOME/.zshenv"
 		"zsh"			"$ZDOTDIR"
 		"dot"			"$LOCAL_BIN/dot"
