@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# Shortcuts for package management including upgrading Cargo packages
+
 command=$1
 shift
 
@@ -36,8 +38,15 @@ case $command in
 		echo "${bold}${blue} Upgrading system${normal}${reset}"
 		sudo pacman -Syu
 
+		# Update flatpak
+		if [ -x "$(command -v flatpak)" ]; then
+			echo "\n${bold}${blue} Updating Flatpak apps${normal}${reset}"
+			flatpak update
+		fi
+
+		# Update cargo crates via install-update
 		if [ -x "$(command -v cargo)" ]; then
-			echo "\n${bold}${blue} Updating crates${normal}${reset}"
+			echo "\n${bold}${blue}󰜦 Updating Cargo crates${normal}${reset}"
 			cargo install-update -a
 		fi
 		;;
