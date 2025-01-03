@@ -32,7 +32,7 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 alias mv="mv -iv"
 alias cp="cp -riv"
 alias mkdir="mkdir -vp"
-alias wget="wget -c" # Resume unfinished download
+alias wget='wget -c --hsts-file="$XDG_DATA_HOME/wget-hsts"' # Resume unfinished download
 
 # Add colors
 alias grep="grep --color=auto"
@@ -65,6 +65,9 @@ alias artisan="php artisan"
 # ==================================================
 # 	ADB
 # ==================================================
+
+# Use alternate data path
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
 
 # Remove package by name
 alias adbrmv="adb shell pm uninstall --user 0"
