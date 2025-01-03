@@ -18,8 +18,6 @@ alias ll="ls -la"
 # Use zoxide instead of cd
 [ -x "$(command -v zoxide)" ] && alias cd="z"
 
-alias dig="dog"
-
 # ==================================================
 # 	zsh directory history
 # ==================================================
@@ -53,6 +51,9 @@ if (( $+commands[grc] )); then
 	alias ping="grc \ping"
 	alias tail="grc \tail"
 fi
+
+# Replace dig
+[ -x "$(command -v dog)" ] && alias dig="dog"
 
 # ==================================================
 # 	Laravel
