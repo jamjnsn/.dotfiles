@@ -88,6 +88,10 @@ export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export WINEPREFIX="$XDG_DATA_HOME"/wine
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 # NPM
 export NPM_PATH="$XDG_CONFIG_HOME/node_modules"
