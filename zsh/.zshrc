@@ -74,15 +74,16 @@ source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/keybindings.zsh
 
 # ==================================================
+# Autostart tmux in kitty
+# ==================================================
+
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+  tmux attach || exec tmux new-session && exit;
+fi
+
+# ==================================================
 # Prompt
 # ==================================================
 
 append_fpath $ZDOTDIR/prompt
 autoload -Uz prompt && prompt
-
-# ==================================================
-# pfetch on start
-# ==================================================
-
-echo "\n"
-pfetch
