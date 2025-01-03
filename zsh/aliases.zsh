@@ -92,7 +92,8 @@ alias winget="powershell.exe -Command winget"
 # ==================================================
 
 # pueue
-alias q=pueue
+alias q="pueue"
+alias qq="pueue add --"
 
 # Use cargo-update to update all crates
 alias cargo-update="cargo install-update -a"
