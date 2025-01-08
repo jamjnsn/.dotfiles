@@ -91,8 +91,6 @@ export WINEPREFIX="$XDG_DATA_HOME"/wine
 export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-
 # NPM
 export NPM_PATH="$XDG_CONFIG_HOME/node_modules"
 export NPM_BIN="$XDG_CONFIG_HOME/node_modules/bin"
