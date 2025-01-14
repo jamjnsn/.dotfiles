@@ -117,3 +117,5 @@ alias vman="virsh --connect qemu:///system"
 # AUR helper aliases
 alias yay="yay"
 alias nay="yay -Rns"
+
+alias lzd="lazydocker"
