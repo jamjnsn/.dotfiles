@@ -38,6 +38,9 @@ case $command in
 		echo "${bold}${blue} Upgrading system${normal}${reset}"
 		sudo pacman -Syu
 
+		echo "${bold}${blue} Upgrading AUR packages${normal}${reset}"
+		yay -Syua
+
 		# Update flatpak
 		if [ -x "$(command -v flatpak)" ]; then
 			echo "\n${bold}${blue} Updating Flatpak apps${normal}${reset}"
