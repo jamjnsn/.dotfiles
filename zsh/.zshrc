@@ -45,7 +45,7 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 [ -x "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
 [ -x "$(command -v mcfly)" ] && eval "$(mcfly init zsh)"
 [ -x "$(command -v navi)" ] && eval "$(navi widget zsh)"
-[ -x "$(command -v fnm)" ] && eval "$(fnm env --use-on-cd)"
+[ -x "$(command -v fnm)" ] && eval "$(fnm env --use-on-cd --shell zsh)"
 
 autoload -Uz add-zsh-hook
 

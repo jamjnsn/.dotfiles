@@ -271,3 +271,12 @@ takeurl() {
     # wget -P $tmpdir $1
     # cd $tmpdir
 }
+
+# =================================================
+# Shortcut to send a string of text to ollama
+# without needing quotes.
+# =================================================
+
+ol() {
+    ollama run llama3.2 "$@"
+}

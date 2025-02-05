@@ -52,6 +52,8 @@ case $command in
 			echo "\n${bold}${blue}󰜦 Updating Cargo crates${normal}${reset}"
 			cargo install-update -a
 		fi
+
+		echo "\n\nUpdates complete! 🎉"
 		;;
 	remove|r)
 		if $purge

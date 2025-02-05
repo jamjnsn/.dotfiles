@@ -16,6 +16,7 @@ case $command in
 		# Set git globals
 		git config --global user.name "Jamie Jansen"
 		git config --global user.email "jamie@jnsn.me"
+		git config --global init.defaultBranch main
 
 		# Install config files
 		typeset -A configs
